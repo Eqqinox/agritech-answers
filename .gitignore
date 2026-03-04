@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# MLflow
+notebooks/mlruns/
+mlflow.db
+
+# CatBoost
+catboost_info/
+notebooks/catboost_info/
+
+# Datasets (trop volumineux pour Git)
+inputs/
+outputs/*.csv
+
+# Modele serialise (lourd, reproductible via notebook)
+model/model_pipeline.pkl
+
+# Notes internes
+notes_m.md
+
+# macOS
+.DS_Store
+
+# Secrets
+.env
