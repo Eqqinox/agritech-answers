@@ -19,7 +19,7 @@ notebooks/catboost_info/
 inputs/
 outputs/*.csv
 
-# Modele serialise (lourd, reproductible via notebook)
+# Modèle sérialisé (lourd, reproductible via notebook)
 model/model_pipeline.pkl
 
 # Notes internes
