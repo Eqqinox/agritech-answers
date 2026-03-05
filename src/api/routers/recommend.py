@@ -14,6 +14,7 @@ def recommend(request_data: RecommendRequest, request: Request):
     résultat = prediction_service.recommend(
         pipeline=request.app.state.pipeline,
         metadata=request.app.state.metadata,
+        cultures_pays=request.app.state.cultures_pays,
         area=request_data.Area,
         year=request_data.Year,
         average_rain_fall_mm_per_year=request_data.average_rain_fall_mm_per_year,

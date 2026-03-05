@@ -20,7 +20,7 @@ class RecommendRequest(BaseModel):
         ..., ge=-50, le=60, description="Température moyenne (°C)"
     )
     prix_par_tonne: Optional[float] = Field(
-        None, description="Prix par tonne (optionnel, pour estimation du revenu)"
+        None, ge=0, description="Prix par tonne (optionnel, pour estimation du revenu)"
     )
 
 

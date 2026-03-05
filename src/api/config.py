@@ -13,6 +13,7 @@ class Settings(BaseSettings):
 
     model_pipeline_path: Path = BASE_DIR / "model" / "model_pipeline.pkl"
     model_metadata_path: Path = BASE_DIR / "model" / "model_metadata.json"
+    cultures_pays_path: Path = BASE_DIR / "model" / "cultures_pays_autorises.json"
 
     model_config = {"env_prefix": "AGRITECH_"}
 

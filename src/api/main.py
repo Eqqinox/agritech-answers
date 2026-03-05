@@ -33,6 +33,8 @@ async def lifespan(app: FastAPI):
     app.state.pipeline = joblib.load(settings.model_pipeline_path)
     with open(settings.model_metadata_path, "r") as f:
         app.state.metadata = json.load(f)
+    with open(settings.cultures_pays_path, "r") as f:
+        app.state.cultures_pays = json.load(f)
     yield
 
 

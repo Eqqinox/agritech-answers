@@ -94,6 +94,7 @@ def predict(
 def recommend(
     pipeline,
     metadata: dict,
+    cultures_pays: dict,
     area: str,
     year: int,
     average_rain_fall_mm_per_year: float,
@@ -101,10 +102,11 @@ def recommend(
     avg_temp: float,
     prix_par_tonne: Optional[float] = None,
 ) -> dict:
-    """Simule le rendement pour toutes les cultures et retourne un classement.
+    """Simule le rendement pour les cultures autorisées et retourne un classement.
 
     Retourne un dictionnaire avec les clés :
     pays, classement (liste triée par rendement ou revenu estimé).
+    Seules les cultures réellement cultivées dans le pays sont simulées.
     """
     _vérifier_modèle(pipeline, metadata)
     _valider_règles_métier(
@@ -114,7 +116,15 @@ def recommend(
     if area not in metadata["pays_disponibles"]:
         raise PaysInconnu(f"Pays inconnu : {area}")
 
-    cultures = metadata["cultures_disponibles"]
+    cultures = [
+        culture for culture in metadata["cultures_disponibles"]
+        if area in cultures_pays.get(culture, [])
+    ]
+
+    if not cultures:
+        raise PaysInconnu(
+            f"Aucune culture référencée pour le pays : {area}"
+        )
 
     rows = [
         {
