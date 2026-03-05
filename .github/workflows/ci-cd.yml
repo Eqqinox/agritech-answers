@@ -45,8 +45,8 @@ jobs:
       - name: Téléchargement des fichiers modèle depuis la GitHub Release
         run: |
           mkdir -p model
-          gh release download v1.0.0 --pattern "*.pkl" --dir model
-          gh release download v1.0.0 --pattern "*.json" --dir model
+          gh release download v1.0.0 --pattern "*.pkl" --dir model --clobber
+          gh release download v1.0.0 --pattern "*.json" --dir model --clobber
         env:
           GH_TOKEN: ${{ github.token }}
 
